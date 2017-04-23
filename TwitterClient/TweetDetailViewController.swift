@@ -129,7 +129,7 @@ class TweetDetailViewController: UIViewController, AddNewTweetViewControllerDele
     
     }
     @IBAction func onFavoriteClick(_ sender: Any) {
-        if(tweet.didUserFavorites){
+        if  tweet.didUserFavorites{
             
             TwitterAPIClient.sharedInstance?.unfavoriteTweet(id: tweet.id!, success: { (tweet:Tweet) in
                 self.favoritesCountLabel.text = "\(tweet.favouritesCount)"

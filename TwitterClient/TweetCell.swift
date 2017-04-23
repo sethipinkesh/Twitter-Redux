@@ -52,12 +52,12 @@ class TweetCell: UITableViewCell {
             favoriteCountLabel.text = "\(tweet.favouritesCount)"
             retweetCountLabel.text = "\(tweet.retweetCount)"
             replyCountLabel.text = "\(tweet.replyCount)"
-            if(tweet.favouritesCount>0){
+            if(tweet.didUserFavorites){
                 favoriteImageView.image = #imageLiteral(resourceName: "favorite_sel_ic")
             }else{
                 favoriteImageView.image = #imageLiteral(resourceName: "favorite_ic")
             }
-            if(tweet.retweetCount>0){
+            if(tweet.didUserRetweet){
                 retweetImageView.image = #imageLiteral(resourceName: "retweet_sel_ic")
             }else{
                 retweetImageView.image = #imageLiteral(resourceName: "retweet_ic")

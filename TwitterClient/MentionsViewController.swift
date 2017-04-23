@@ -42,7 +42,7 @@ class MentionsViewController: UIViewController {
         
     }
     @IBAction func onLogoutButtonTap(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        TwitterAPIClient.sharedInstance?.logOut()
     }
 
     /*
@@ -57,12 +57,13 @@ class MentionsViewController: UIViewController {
 
 }
 
-extension MentionsViewController: UITableViewDataSource,UITableViewDelegate{
+extension MentionsViewController: UITableViewDataSource,UITableViewDelegate,TweetCellDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetMentionCell",for: indexPath) as! TweetCell
         let tweet = tweetsArray[indexPath.row]
         cell.tweet = tweet
+        cell.tweetCellDelegate = self
         
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor(red: (192/255.0), green: (222/255.0), blue: (237/255.0), alpha: 1.0)
@@ -77,6 +78,16 @@ extension MentionsViewController: UITableViewDataSource,UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func thumbImageTappedAction(senderCell: TweetCell) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController =
+            storyBoard.instantiateViewController(withIdentifier:"TimelineViewController") as! TimelineViewController
+        viewController.user = senderCell.tweet.user
+        let navController = UINavigationController(rootViewController: viewController)
+        self.present(navController, animated: true)
+        
     }
 
 }

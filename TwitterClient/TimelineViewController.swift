@@ -15,6 +15,7 @@ class TimelineViewController: UIViewController {
     var user: User?
     var isOtherUser: Bool?
     var headerView: ProfileSectionCell!
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,9 @@ class TimelineViewController: UIViewController {
         timeLineTableView.delegate = self
         timeLineTableView.rowHeight = UITableViewAutomaticDimension
         timeLineTableView.estimatedRowHeight = 150
+        
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_refreshControl:)), for: UIControlEvents.valueChanged)
+        timeLineTableView.insertSubview(refreshControl, at: 0)
         
         if user == nil{
             isOtherUser = false
@@ -45,11 +49,25 @@ class TimelineViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    func refreshControlAction(_refreshControl: UIRefreshControl){
+        loadTimeLineData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "tweetDetailSegueFromProfile"){
+            //            let navigationController = segue.destination as! UINavigationController
+            let navigationController = segue.destination as! UINavigationController
+            let destinationUIViewController = navigationController.topViewController as! TweetDetailViewController
+            let cell = sender as! TweetCell
+            let index = timeLineTableView.indexPath(for: cell)
+            destinationUIViewController.tweet = tweetsArray[(index?.row)!]
+        }
+    }
     
     func loadTimeLineData(){
         
@@ -57,9 +75,15 @@ class TimelineViewController: UIViewController {
             self.tweetsArray = tweets
             print(self.tweetsArray[0])
             self.timeLineTableView.reloadData()
+            if self.refreshControl.isRefreshing{
+                self.refreshControl.endRefreshing()
+            }
             
         }, failure: { (error:Error) in
             print("Some thing went worng need to show it on UI")
+            if self.refreshControl.isRefreshing{
+                self.refreshControl.endRefreshing()
+            }
         })
         
     }

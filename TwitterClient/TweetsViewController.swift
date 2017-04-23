@@ -52,6 +52,7 @@ class TweetsViewController: UIViewController {
             }
 
         }, failure: { (error:Error) in
+            print(error.localizedDescription)
             print("Some thing went worng need to show it on UI")
             if self.refreshControl.isRefreshing{
                 self.refreshControl.endRefreshing()

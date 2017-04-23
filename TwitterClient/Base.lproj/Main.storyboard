@@ -80,7 +80,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="172"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="57K-Ue-yUi" id="RyK-ed-H4d">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="171.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumb_placeholder_ic" translatesAutoresizingMaskIntoConstraints="NO" id="j9O-Vb-98H">
@@ -659,7 +659,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="THY-wb-jEL" id="vIy-gS-p4s">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long enough" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5za-NZ-Qh2">
@@ -738,7 +738,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="172"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vX4-V3-bCJ" id="FhQ-82-4hq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="171.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumb_placeholder_ic" translatesAutoresizingMaskIntoConstraints="NO" id="U5R-mA-xJP">
@@ -899,7 +899,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="PEl-pr-hfu">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="onLogoutButtonTap:" destination="zbE-xi-lVu" id="5vp-ZK-ULG"/>
+                                <action selector="onLogoutButtonTap:" destination="zbE-xi-lVu" id="Ek0-g3-Vrq"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="DMG-XB-bQI">
@@ -938,7 +938,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="172"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g86-67-wMD" id="eeD-n8-jiP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="171.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumb_placeholder_ic" translatesAutoresizingMaskIntoConstraints="NO" id="PAa-V4-YWF">
@@ -1082,6 +1082,7 @@
                                             <outlet property="timeLabelTopViewConstraint" destination="D2g-Vk-CPH" id="ZIL-TR-qEe"/>
                                             <outlet property="tweetTextLabel" destination="PSh-qI-0eH" id="fKu-8f-vRb"/>
                                             <outlet property="tweetTimeLabel" destination="Pem-sO-qCV" id="rKW-cQ-AQ8"/>
+                                            <segue destination="dyW-5y-3wN" kind="presentation" identifier="tweetDetailSegueFromProfile" id="JLd-8y-cHj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1200,6 +1201,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Aem-2Z-aJI"/>
-        <segue reference="8yb-ok-gxQ"/>
+        <segue reference="JLd-8y-cHj"/>
     </inferredMetricsTieBreakers>
 </document>
